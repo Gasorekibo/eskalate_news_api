@@ -20,15 +20,3 @@ export const setupAnalyticsJob = async () => {
 
     console.log('Daily Analytics Job scheduled via BullMQ.');
 };
-
-// Manual trigger for testing/initial run if needed
-export const runAggregationForDate = async (dateStr: string) => {
-    try {
-        await analyticsQueue.add('manual-aggregation', { date: dateStr });
-        console.log(`Manual aggregation job added to queue for date: ${dateStr}`);
-        return true;
-    } catch (error) {
-        console.error('Manual Aggregation Queue Error:', error);
-        return false;
-    }
-};
